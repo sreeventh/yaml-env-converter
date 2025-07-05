@@ -38,39 +38,50 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1>YAML &lt;-&gt; ENV Converter</h1>
-      <div style={{ display: 'flex', gap: 32, justifyContent: 'center', alignItems: 'flex-start', marginTop: 32 }}>
-        <div>
-          <h2>YAML</h2>
-          <textarea
-            value={yamlValue}
-            onChange={e => setYamlValue(e.target.value)}
-            rows={20}
-            cols={40}
-            placeholder="Paste YAML here..."
-            style={{ fontFamily: 'monospace', fontSize: 14 }}
-          />
-          <div>
-            <button onClick={handleYamlToEnv} style={{ marginTop: 8 }}>YAML → ENV</button>
+      {/* Floating particles for ambient effect */}
+      <div className="floating-particle"></div>
+      <div className="floating-particle"></div>
+      <div className="floating-particle"></div>
+      
+      <div className="app-header">
+        <h1 className="app-title">YAML ↔ ENV</h1>
+        <p className="app-subtitle">Convert between YAML and environment variables with ease</p>
+      </div>
+      
+      <div className="converter-container">
+        <div className="converter-section">
+          <h2 className="section-header">YAML</h2>
+          <div className="glass-card">
+            <textarea
+              className="glass-textarea"
+              value={yamlValue}
+              onChange={e => setYamlValue(e.target.value)}
+              placeholder="Paste your YAML configuration here..."
+            />
+            <button className="convert-button" onClick={handleYamlToEnv}>
+              Convert to ENV →
+            </button>
           </div>
         </div>
-        <div>
-          <h2>ENV</h2>
-          <textarea
-            value={envValue}
-            onChange={e => setEnvValue(e.target.value)}
-            rows={20}
-            cols={40}
-            placeholder="Paste .env here..."
-            style={{ fontFamily: 'monospace', fontSize: 14 }}
-          />
-          <div>
-            <button onClick={handleEnvToYaml} style={{ marginTop: 8 }}>ENV → YAML</button>
+        
+        <div className="converter-section">
+          <h2 className="section-header">Environment Variables</h2>
+          <div className="glass-card">
+            <textarea
+              className="glass-textarea"
+              value={envValue}
+              onChange={e => setEnvValue(e.target.value)}
+              placeholder="Paste your .env file here..."
+            />
+            <button className="convert-button" onClick={handleEnvToYaml}>
+              ← Convert to YAML
+            </button>
           </div>
         </div>
       </div>
-      <footer style={{ marginTop: 40, color: '#aaa' }}>
-        <small>Made for YAML &lt;-&gt; ENV conversion</small>
+      
+      <footer className="app-footer">
+        <small>Made with ❤️ for seamless YAML ↔ ENV conversion</small>
       </footer>
     </div>
   );
